@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-canvas: #F7F7F4;
+  --bg-canvas-rgb: 247 247 244;
+  --bg-surface: rgba(255, 255, 255, 0.92);
+  --bg-elevated: #FFFFFF;
+  --bg-elevated-rgb: 255 255 255;
+  --bg-muted: #EFEFE9;
+  --bg-muted-rgb: 239 239 233;
+  --text-primary: #202522;
+  --text-primary-rgb: 32 37 34;
+  --text-secondary: #545D56;
+  --text-secondary-rgb: 84 93 86;
+  --border-subtle: #DFE3DC;
+  --border-subtle-rgb: 223 227 220;
+  --border-strong: #828C85;
+  --border-strong-rgb: 130 140 133;
+  --accent-terracotta: #C25438;
+  --accent-terracotta-rgb: 194 84 56;
+  --accent-terracotta-fg: #FFFFFF;
+  --accent-terracotta-fg-rgb: 255 255 255;
+  --accent-terracotta-hover: #A9452B;
+  --accent-terracotta-hover-rgb: 169 69 43;
+  --accent-sage: #2A6B52;
+  --accent-sage-rgb: 42 107 82;
+  --accent-sage-bg: #E4F0EA;
+  --accent-gold: #9E7B1B;
+  --accent-gold-rgb: 158 123 27;
+}
+
+.dark {
+  --bg-canvas: #0F1211;
+  --bg-canvas-rgb: 15 18 17;
+  --bg-surface: rgba(23, 28, 26, 0.92);
+  --bg-elevated: #171C1A;
+  --bg-elevated-rgb: 23 28 26;
+  --bg-muted: #202724;
+  --bg-muted-rgb: 32 39 36;
+  --text-primary: #F3F4F0;
+  --text-primary-rgb: 243 244 240;
+  --text-secondary: #A5AFA8;
+  --text-secondary-rgb: 165 175 168;
+  --border-subtle: #2B332E;
+  --border-subtle-rgb: 43 51 46;
+  --border-strong: #6A766E;
+  --border-strong-rgb: 106 118 110;
+  --accent-terracotta: #E07A5F;
+  --accent-terracotta-rgb: 224 122 95;
+  --accent-terracotta-fg: #181210;
+  --accent-terracotta-fg-rgb: 24 18 16;
+  --accent-terracotta-hover: #EB8D74;
+  --accent-terracotta-hover-rgb: 235 141 116;
+  --accent-sage: #81B29A;
+  --accent-sage-rgb: 129 178 154;
+  --accent-sage-bg: rgba(129, 178, 154, 0.16);
+  --accent-gold: #D4AF37;
+  --accent-gold-rgb: 212 175 55;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* High-contrast accessible keyboard focus ring across both themes */
+  *:focus-visible {
+    outline: 2px solid var(--accent-terracotta);
+    outline-offset: 2px;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom subtle scrollbars for floating architectural panels */
+.studio-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.studio-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.studio-scroll::-webkit-scrollbar-thumb {
+  background: rgba(130, 140, 133, 0.35);
+  border-radius: 3px;
+}
+
+.studio-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(130, 140, 133, 0.6);
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print stylesheet for RAB / BoQ PDF Export */
+@media print {
+  html,
+  body {
+    background: #FFFFFF !important;
+    color: #111111 !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only-container {
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #FFFFFF !important;
+    color: #111111 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  table {
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+}

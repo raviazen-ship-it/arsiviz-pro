@@ -1,0 +1,508 @@
+import { Language } from '@/types/project';
+
+export interface FAQItem {
+  id: string;
+  category:
+    | 'viewport'
+    | 'materials'
+    | 'construction'
+    | 'rab'
+    | 'kpr'
+    | 'projects'
+    | 'account'
+    | 'limitations';
+  categoryLabelId: string;
+  categoryLabelEn: string;
+  questionId: string;
+  questionEn: string;
+  answerId: string;
+  answerEn: string;
+}
+
+export const FAQ_ITEMS: FAQItem[] = [
+  {
+    id: 'faq-viewport',
+    category: 'viewport',
+    categoryLabelId: 'Viewport 3D',
+    categoryLabelEn: '3D Viewport',
+    questionId: 'Bagaimana cara memutar, memperbesar, dan melihat bagian dalam rumah 3D?',
+    questionEn: 'How do I rotate, zoom, pan, and inspect the inside of the 3D house?',
+    answerId:
+      'Klik kiri dan geser (atau satu jari di layar sentuh) untuk memutar kamera 360 derajat. Gunakan roda scroll atau cubit dua jari untuk zoom, serta klik kanan dan geser untuk menggeser titik pandang (pan). Untuk melihat tata ruang dalam, aktifkan tombol Cutaway (Buka Atap) atau pilih preset kamera Interior Mode di sudut kanan atas viewport. Anda juga dapat mengklik elemen bangunan secara langsung untuk melihat keterangan konstruksinya.',
+    answerEn:
+      'Left-click and drag (or drag with one finger on touchscreens) to orbit 360 degrees. Scroll or pinch to zoom, and right-click drag (or two-finger drag) to pan. To inspect interior rooms, toggle Cutaway Mode (Open Roof) or choose the Interior Mode camera preset at the top-right of the viewport. You can also click building elements directly to inspect their construction stage and material.',
+  },
+  {
+    id: 'faq-house-types',
+    category: 'materials',
+    categoryLabelId: 'Tipe Rumah & Material',
+    categoryLabelEn: 'House Types & Materials',
+    questionId: 'Apa perbedaan utama antara keempat tipe rumah dan bagaimana material bekerja?',
+    questionEn: 'What distinguishes the four house geometries and how do materials apply?',
+    answerId:
+      'Setiap tipe rumah dibangun dengan geometri 3D prosedural yang berbeda: Modern Minimalist Box memiliki massa kotak berparapet datar, Tropical Contemporary Villa memiliki atap limasan lebar ber-overhang teduh dengan kisi kayu, Industrial Loft House menonjolkan rangka kolom-balok baja gelap dan bukaan tinggi, sedangkan Japandi Compact Home memiliki taman tengah (inner courtyard). Perubahan warna cat diterapkan ke dinding fasad, penutup atap diterapkan ke bidang atap, kayu ulin atau batu andesit diterapkan secara realistis pada kisi secondary skin serta aksen fasad, dan material lantai diterapkan pada ruang dalam.',
+    answerEn:
+      'Each house type uses distinct procedural 3D architecture: Modern Minimalist Box uses flat parapet cubic massing, Tropical Contemporary Villa features a wide hip roof with deep overhangs and louvers, Industrial Loft House exposes dark steel framing and tall loft glazing, and Japandi Compact Home integrates a central inner courtyard. Facade colors apply to exterior walls, roof materials to roof coverings, Ulin wood or Andesite stone to realistic secondary-skin louvers and feature walls, and floor finishes to interior slabs.',
+  },
+  {
+    id: 'faq-stages',
+    category: 'construction',
+    categoryLabelId: 'Tahap Konstruksi',
+    categoryLabelEn: 'Construction Stages',
+    questionId: 'Apa arti Tahap 0 hingga Tahap 5 pada dock timeline konstruksi?',
+    questionEn: 'What do Stages 0 through 5 represent on the construction timeline dock?',
+    answerId:
+      'Timeline memvisualisasikan urutan fisik pembangunan rumah dari nol: Tahap 0 menampilkan persiapan kavling dan patok bouwplank; Tahap 1 menampilkan pondasi dan balok sloof; Tahap 2 menampilkan kolom, balok, plat lantai, dan tangga; Tahap 3 menambahkan pasangan dinding, rangka atap, serta jalur pipa/listrik MEP; Tahap 4 menutup eksterior dengan atap final, kaca, dan fasad; dan Tahap 5 menampilkan lantai interior, furnitur, serta lanskap lengkap. Durasi waktu yang tertulis adalah ilustrasi yang bergantung pada lokasi, cuaca, dan kesiapan kontraktor.',
+    answerEn:
+      'The timeline visualizes physical construction progression: Stage 0 shows site clearing and batter boards (bouwplank); Stage 1 reveals footings and grade beams (sloof); Stage 2 adds columns, beams, slabs, and stairs; Stage 3 adds masonry walls, roof framing, and rough-in MEP pipes/conduits; Stage 4 completes weather-tight roofing, glazing, and facade finishes; and Stage 5 installs interior flooring, furniture, and landscaping. Listed durations are illustrative estimates that depend on site conditions, weather, and contractor capacity.',
+  },
+  {
+    id: 'faq-rab',
+    category: 'rab',
+    categoryLabelId: 'RAB & BoQ',
+    categoryLabelEn: 'RAB & BoQ Costing',
+    questionId: 'Bagaimana cara membaca estimasi RAB/BoQ dan menyesuaikan harga satuan?',
+    questionEn: 'How should I read the RAB/BoQ breakdown and customize unit rates?',
+    answerId:
+      'Tabel RAB membagi estimasi biaya ke dalam 12 komponen terstruktur berdasarkan luas kavling, tapak pondasi, luas lantai bangunan (1 atau 2 lantai), luas dinding bersih (dikurangi bukaan agar tidak dihitung ganda), proyeksi atap, material pilihan, add-on aktif, serta dana cadangan (contingency). Anda dapat mengubah harga satuan per meter persegi maupun persentase contingency sesuai kota Anda, lalu menekan Pulihkan Default kapan saja. Angka ini adalah estimasi simulasi awal, bukan penawaran resmi kontraktor.',
+    answerEn:
+      'The BoQ table breaks costs into 12 structured categories derived from plot area, foundation footprint, gross floor area (1 or 2 stories), net wall area (deducting openings to prevent double counting), roof projection, chosen finishes, active add-ons, and contingency reserve. You can edit base unit rates and contingency percentage to match local city rates, and reset to defaults anytime. Figures are simulation estimates, not a binding contractor quote.',
+  },
+  {
+    id: 'faq-kpr',
+    category: 'kpr',
+    categoryLabelId: 'Simulasi KPR',
+    categoryLabelEn: 'Mortgage (KPR) Simulator',
+    questionId: 'Bagaimana rumus cicilan KPR dihitung di aplikasi ini?',
+    questionEn: 'How is the monthly mortgage (KPR) installment calculated?',
+    answerId:
+      'Kalkulator KPR menggunakan rumus anuitas bulanan standar dengan suku bunga bulanan r = (bunga tahunan / 12) dan jumlah periode n = (tenor tahun x 12). Jika suku bunga diisi 0%, pokok pinjaman dibagi rata sepanjang jumlah bulan. Simulasi mengasumsikan suku bunga tetap sepanjang tenor sebagai gambaran awal; produk KPR bank di dunia nyata umumnya memiliki periode bunga fixed dilanjutkan bunga floating serta biaya provisi, administrasi, asuransi jiwa/kebakaran, AJB, dan pajak yang perlu dikonfirmasi langsung ke bank.',
+    answerEn:
+      'The simulator uses the standard monthly annuity formula with monthly rate r = (annual rate / 12) and total months n = (tenor years x 12). When interest is set to 0%, principal is divided evenly across total months. This simulation assumes a constant rate across the tenor for planning purposes; real bank mortgages often transition from fixed to floating rates and carry appraisal, origination, insurance, notary, and tax fees subject to bank underwriting.',
+  },
+  {
+    id: 'faq-projects',
+    category: 'projects',
+    categoryLabelId: 'Simpan & Bandingkan',
+    categoryLabelEn: 'Save & Compare Designs',
+    questionId: 'Bagaimana cara menyimpan beberapa alternatif desain dan membandingkannya?',
+    questionEn: 'How do I save design alternatives, export JSON, and compare two projects?',
+    answerId:
+      'Klik Simpan Proyek di header atau tab Proyek di sidebar kiri untuk menyimpan konfigurasi ke daftar proyek lokal. Anda dapat menggandakan (duplikasi) proyek, mengganti nama, mengubah material atau jumlah lantai, lalu menyimpannya sebagai alternatif kedua. Setelah memiliki minimal dua proyek tersimpan, buka fitur Bandingkan Desain untuk melihat perbedaan spesifikasi ukuran, material, add-on, dan total RAB secara berdampingan. Gunakan Ekspor JSON untuk mencadangkan file ke perangkat lain.',
+    answerEn:
+      'Click Save Project in the header or open the Projects tab in the left sidebar to store your configuration locally. You can duplicate an existing project, rename it, test different materials or floor counts, and save it as a second option. Once at least two projects are saved, open Compare Designs to inspect dimensions, finishes, add-ons, and RAB cost differences side by side. Use Export JSON to back up or transfer configurations across devices.',
+  },
+  {
+    id: 'faq-demo-mode',
+    category: 'account',
+    categoryLabelId: 'Demo Lokal vs Akun Cloud',
+    categoryLabelEn: 'Local Demo vs Cloud Sync',
+    questionId: 'Apa arti status Demo Mode pada penyimpanan proyek dan formulir booking konsultasi?',
+    questionEn: 'What does Demo Mode mean for saved projects and architect booking requests?',
+    answerId:
+      'Saat layanan autentikasi dan database backend belum dihubungkan melalui environment server, ArsiViz Pro berjalan secara transparan dalam Demo Mode. Artinya, proyek yang Anda simpan dan draf jadwal konsultasi arsitek disimpan di penyimpanan browser (localStorage) perangkat ini saja, belum tersinkron ke cloud dan belum terkirim ke email arsitek. Untuk memindahkan data antarperangkat pada mode ini, gunakan fitur Ekspor dan Impor JSON.',
+    answerEn:
+      'When backend authentication and database environment variables are not configured, ArsiViz Pro runs transparently in Local Demo Mode. Saved projects and consultation booking requests are stored solely in this browser localStorage rather than synced to a cloud account or emailed to an architect studio. To move configurations between devices in Demo Mode, use JSON Export and Import.',
+  },
+  {
+    id: 'faq-limitations',
+    category: 'limitations',
+    categoryLabelId: 'Batasan Simulasi & Legal',
+    categoryLabelEn: 'Simulation & Engineering Limits',
+    questionId: 'Apakah model 3D dan angka RAB di sini dapat langsung dipakai untuk membangun?',
+    questionEn: 'Can this 3D simulation and RAB output be used directly for construction on site?',
+    answerId:
+      'Tidak secara langsung. ArsiViz Pro adalah alat eksplorasi konsep arsitektur, edukasi tahapan bangun, dan estimasi finansial tahap awal. Sebelum membangun di lapangan, Anda tetap wajib memiliki penyelidikan tanah (sondir), gambar kerja detail arsitektur-struktur-MEP yang dihitung oleh arsitek bersertifikat (STRA) dan insinyur struktur profesional, pengurusan PBG (Persetujuan Bangunan Gedung) serta SLF sesuai peraturan daerah setempat, dan kontrak RAB final bersama kontraktor pelaksana.',
+    answerEn:
+      'Not directly. ArsiViz Pro is an early-stage architectural exploration, construction literacy, and preliminary budgeting tool. Actual construction requires site-specific soil testing, detailed architectural, structural, and MEP working drawings stamped by licensed architects and structural engineers, official local building approvals (PBG and SLF), and a surveyed contractor Bill of Quantities.',
+  },
+];
+
+export const UI_COPY = {
+  id: {
+    appName: 'ArsiViz',
+    badge: 'PRO v2.0',
+    nav: {
+      studio: 'Studio 3D',
+      construction: 'Alur Konstruksi',
+      catalog: 'Katalog Tipe Rumah',
+      calculator: 'Kalkulator KPR & RAB',
+      faq: 'FAQ',
+    },
+    header: {
+      undo: 'Urungkan perubahan konfigurasi',
+      redo: 'Ulangi perubahan konfigurasi',
+      save: 'Simpan Proyek',
+      saved: 'Tersimpan',
+      unsaved: 'Belum disimpan',
+      themeLight: 'Mode Terang',
+      themeDark: 'Mode Gelap',
+      bookConsult: 'Konsultasi Arsitek',
+      compare: 'Bandingkan',
+    },
+    leftSidebar: {
+      toggleOpen: 'Buka panel proyek & tahap',
+      toggleClose: 'Sembunyikan panel kiri',
+      tabProject: 'Proyek',
+      tabStage: 'Tahap',
+      tabTechnical: 'Info Teknis',
+    },
+    rightSidebar: {
+      toggleOpen: 'Buka konfigurator desain',
+      toggleClose: 'Sembunyikan panel kanan',
+      tabType: 'Tipe Rumah',
+      tabMaterial: 'Material',
+      tabAddons: 'Add-ons',
+      tabDimensions: 'Ukuran',
+    },
+    viewport: {
+      cameraPerspective: 'Perspektif 3D',
+      cameraFront: 'Fasad Depan',
+      cameraTop: 'Denah Atas',
+      cameraInterior: 'Interior Mode',
+      cameraReset: 'Reset Kamera',
+      cutaway: 'Cutaway (Buka Atap)',
+      grid: 'Grid Kavling',
+      dimensions: 'Dimensi (m)',
+      autoRotate: 'Putar Otomatis',
+      sunStudy: 'Studi Matahari',
+      nightLightsActive: 'Lampu malam menyala',
+      daylightActive: 'Cahaya siang alami',
+      loadingScene: 'Menyiapkan geometri arsitektur 3D...',
+      webglUnavailableTitle: 'Mode Skematik Aktif (WebGL Tidak Tersedia)',
+      webglUnavailableDesc:
+        'Perangkat atau browser ini tidak mengaktifkan akselerasi WebGL. Anda tetap dapat mengeksplorasi denah skematik proporsional, mengubah spesifikasi rumah, menghitung RAB, dan menjalankan simulasi KPR secara penuh.',
+      selectedElement: 'Elemen Terpilih',
+      editInPanel: 'Ubah Material / Opsi',
+      clearSelection: 'Tutup info elemen',
+      perfLabel: 'Kualitas Render',
+      perfAuto: 'Adaptif',
+      perfHigh: 'Tinggi',
+      perfLow: 'Hemat Daya',
+    },
+    timeline: {
+      stagePrefix: 'Tahap',
+      ofFive: 'dari 5',
+      play: 'Putar urutan konstruksi',
+      pause: 'Jeda pemutaran tahap',
+      replay: 'Ulang dari Tahap 0',
+      prev: 'Tahap sebelumnya',
+      next: 'Tahap berikutnya',
+      bestCamera: 'Kamera Tahap Ini',
+      stageGuideBtn: 'Detail Edukasi',
+    },
+    projectPanel: {
+      activeProject: 'Proyek Aktif',
+      projectNameLabel: 'Nama Proyek',
+      newProject: 'Proyek Baru',
+      saveNow: 'Simpan ke Perangkat',
+      duplicate: 'Duplikasi',
+      exportJson: 'Ekspor JSON',
+      importJson: 'Impor JSON',
+      compareBtn: 'Bandingkan 2 Desain',
+      resetConfig: 'Reset ke Default',
+      savedListTitle: 'Daftar Proyek Tersimpan',
+      emptySavedTitle: 'Belum ada proyek tersimpan di perangkat ini',
+      emptySavedAction:
+        'Sesuaikan tipe rumah, ukuran, atau material lalu tekan "Simpan ke Perangkat" agar alternatif desain muncul di sini.',
+      lastSaved: 'Disimpan',
+      loadBtn: 'Buka',
+      renameBtn: 'Ubah Nama',
+      deleteBtn: 'Hapus',
+    },
+    stagePanel: {
+      purpose: 'Tujuan Tahap',
+      duration: 'Estimasi Durasi Indikatif',
+      works: 'Lingkup Pekerjaan Utama',
+      permits: 'Dokumen & Perizinan Terkait (PBG / SLF)',
+      checklist: 'Hal yang Wajib Diperiksa di Lapangan',
+      supervision: 'Tips Pengawasan Kontraktor',
+      focusCamera: 'Lihat Tahap Ini dari Kamera Terbaik',
+    },
+    technicalPanel: {
+      summaryTitle: 'Ringkasan Teknis Konfigurasi',
+      landSize: 'Ukuran Kavling Lahan',
+      landArea: 'Luas Lahan Total',
+      footprint: 'Luas Tapak Dasar',
+      grossArea: 'Luas Bangunan Total',
+      remainingYard: 'Sisa Ruang Terbuka',
+      floors: 'Jumlah Lantai',
+      orientation: 'Orientasi Fasad Depan',
+      kdbRatio: 'Rasio Tutupan Lahan (Ilustrasi KDB)',
+      estimatedRab: 'Estimasi Simulasi RAB',
+      costPerM2: 'Rata-rata Biaya Simulasi / m²',
+      openFullRab: 'Buka Rincian RAB & BoQ',
+      openPrintView: 'Lihat Rincian RAB (Print / PDF)',
+      disclaimer:
+        'Catatan: Angka teknis dan biaya di atas merupakan estimasi simulasi konseptual, bukan gambar kerja struktur resmi atau penawaran kontraktor.',
+    },
+    configurator: {
+      facadeHeading: 'Warna Dinding & Fasad',
+      customColor: 'Warna Custom (HEX)',
+      roofHeading: 'Material Penutup Atap',
+      accentHeading: 'Aksen Eksterior & Secondary Skin',
+      floorHeading: 'Material Lantai Interior',
+      interiorNote: 'Tips: Aktifkan Cutaway atau Interior Mode untuk mengamati lantai & furnitur lebih jelas.',
+      addonsInterior: 'Paket Furnitur Interior',
+      addonsOutdoor: 'Fitur Eksterior & Energi',
+      plotPresets: 'Preset Ukuran Kavling',
+      landWidth: 'Lebar Lahan (m)',
+      landLength: 'Panjang Lahan (m)',
+      buildingWidth: 'Lebar Bangunan (m)',
+      buildingLength: 'Panjang Bangunan (m)',
+      floorCount: 'Jumlah Lantai',
+      floor1: '1 Lantai',
+      floor2: '2 Lantai (+Tangga & Plat)',
+      orientation: 'Orientasi Arah Hadap Rumah',
+      autoFitBtn: 'Sesuaikan Bangunan ke Batas Aman Lahan',
+    },
+    finance: {
+      modalTitle: 'Estimasi RAB/BoQ & Simulasi KPR',
+      tabRab: 'Rincian RAB & BoQ',
+      tabKpr: 'Simulasi Cicilan KPR',
+      simulationBadge: 'Estimasi Simulasi - Bukan Penawaran Kontraktor',
+      printBtn: 'Lihat Rincian RAB Lengkap (PDF / Print View)',
+      editRatesBtn: 'Sesuaikan Harga Satuan & Contingency',
+      hideRatesBtn: 'Sembunyikan Editor Asumsi',
+      restoreDefaultsBtn: 'Pulihkan Asumsi Default',
+      contingencyLabel: 'Biaya Cadangan / Contingency (%)',
+      rabDisclaimer:
+        'Harga menggunakan asumsi dasar simulasi yang dapat Anda sesuaikan. Biaya konstruksi nyata sangat dipengaruhi kota/kabupaten, akses lokasi, daya dukung tanah (sondir), spesifikasi struktur, fluktuasi material, pajak, dan margin kontraktor.',
+      kprUseRabBtn: 'Gunakan Total RAB Saat Ini',
+      kprBasePrice: 'Biaya Konstruksi Bangunan (IDR)',
+      kprLandCost: 'Tambahan Harga Lahan Opsional (IDR)',
+      kprDpModePct: 'Persentase (%)',
+      kprDpModeIdr: 'Nominal (Rp)',
+      kprDpLabel: 'Uang Muka (DP)',
+      kprInterest: 'Suku Bunga Tahunan (% p.a.)',
+      kprTenor: 'Tenor Pinjaman (Tahun)',
+      kprUpfrontFees: 'Estimasi Biaya Awal Bank/Notaris/Pajak (Opsional)',
+      kprPrincipal: 'Pokok Pinjaman Setelah DP',
+      kprMonthly: 'Estimasi Cicilan Bulanan',
+      kprTotalLoanPay: 'Total Pembayaran Pokok + Bunga',
+      kprTotalInterest: 'Total Estimasi Bunga Selama Tenor',
+      kprDpRatio: 'Rasio DP terhadap Harga Dasar',
+      kprUpfrontCash: 'Total Dana Awal Dibutuhkan (DP + Biaya Awal)',
+      kprDisclaimer:
+        'Simulasi ini menghitung cicilan anuitas dengan asumsi bunga tetap sepanjang tenor dan bukan persetujuan kredit bank. Produk KPR perbankan umumnya memiliki masa bunga fixed terbatas lalu mengikuti bunga floating pasar, ditambah biaya provisi, administrasi, asuransi jiwa & kebakaran, appraisal, AJB/APHT, serta pajak BPHTB.',
+    },
+    onboarding: {
+      title: 'Selamat Datang di Studio ArsiViz Pro',
+      subtitle: 'Empat langkah singkat untuk mengeksplorasi rancangan rumah Anda:',
+      steps: [
+        {
+          title: '1. Putar & Bedah Ruang 3D',
+          desc: 'Geser kanvas untuk orbit 360°, gunakan Cutaway (Buka Atap) untuk melihat ruang dalam, dan geser jam Studi Matahari.',
+        },
+        {
+          title: '2. Pilih dari 4 Geometri Rumah',
+          desc: 'Bandingkan bentuk fisik Modern Minimalist, Tropical Villa, Industrial Loft, atau Japandi Courtyard pada panel kanan.',
+        },
+        {
+          title: '3. Kustomisasi Material, Lantai & Ukuran',
+          desc: 'Ubah warna fasad, atap, kisi kayu ulin/batu andesit, jumlah lantai (1-2), serta add-on; estimasi RAB otomatis diperbarui.',
+        },
+        {
+          title: '4. Pelajari 6 Tahap Konstruksi',
+          desc: 'Gunakan dock timeline di bawah untuk memantau urutan pembangunan dari pondasi hingga siap huni beserta panduan PBG/SLF.',
+        },
+      ],
+      startBtn: 'Mulai Eksplorasi Studio',
+    },
+  },
+  en: {
+    appName: 'ArsiViz',
+    badge: 'PRO v2.0',
+    nav: {
+      studio: '3D Studio',
+      construction: 'Construction Flow',
+      catalog: 'House Catalog',
+      calculator: 'RAB & Mortgage',
+      faq: 'FAQ',
+    },
+    header: {
+      undo: 'Undo configuration change',
+      redo: 'Redo configuration change',
+      save: 'Save Project',
+      saved: 'Saved',
+      unsaved: 'Unsaved changes',
+      themeLight: 'Light Mode',
+      themeDark: 'Dark Mode',
+      bookConsult: 'Book Architect',
+      compare: 'Compare',
+    },
+    leftSidebar: {
+      toggleOpen: 'Open project & stage panel',
+      toggleClose: 'Collapse left panel',
+      tabProject: 'Projects',
+      tabStage: 'Stages',
+      tabTechnical: 'Tech Specs',
+    },
+    rightSidebar: {
+      toggleOpen: 'Open design configurator',
+      toggleClose: 'Collapse right panel',
+      tabType: 'House Type',
+      tabMaterial: 'Materials',
+      tabAddons: 'Add-ons',
+      tabDimensions: 'Dimensions',
+    },
+    viewport: {
+      cameraPerspective: '3D Perspective',
+      cameraFront: 'Front Elevation',
+      cameraTop: 'Top Plan',
+      cameraInterior: 'Interior Mode',
+      cameraReset: 'Reset View',
+      cutaway: 'Cutaway (Open Roof)',
+      grid: 'Site Grid',
+      dimensions: 'Dimensions (m)',
+      autoRotate: 'Auto-Rotate',
+      sunStudy: 'Sun Study',
+      nightLightsActive: 'Evening lights active',
+      daylightActive: 'Natural daylight',
+      loadingScene: 'Preparing 3D architectural geometry...',
+      webglUnavailableTitle: 'Schematic Mode Active (WebGL Unavailable)',
+      webglUnavailableDesc:
+        'Hardware WebGL acceleration is unavailable in this browser environment. You can still inspect the scaled architectural schematic, configure materials and dimensions, calculate the BoQ/RAB, and run mortgage simulations.',
+      selectedElement: 'Selected Element',
+      editInPanel: 'Edit Material / Option',
+      clearSelection: 'Dismiss selection',
+      perfLabel: 'Render Quality',
+      perfAuto: 'Adaptive',
+      perfHigh: 'High',
+      perfLow: 'Power Saver',
+    },
+    timeline: {
+      stagePrefix: 'Stage',
+      ofFive: 'of 5',
+      play: 'Play construction sequence',
+      pause: 'Pause sequence playback',
+      replay: 'Replay from Stage 0',
+      prev: 'Previous stage',
+      next: 'Next stage',
+      bestCamera: 'Stage Camera',
+      stageGuideBtn: 'Stage Guide',
+    },
+    projectPanel: {
+      activeProject: 'Active Project',
+      projectNameLabel: 'Project Name',
+      newProject: 'New Project',
+      saveNow: 'Save to Device',
+      duplicate: 'Duplicate',
+      exportJson: 'Export JSON',
+      importJson: 'Import JSON',
+      compareBtn: 'Compare 2 Designs',
+      resetConfig: 'Reset to Default',
+      savedListTitle: 'Saved Projects on This Device',
+      emptySavedTitle: 'No saved projects on this device yet',
+      emptySavedAction:
+        'Adjust house type, plot dimensions, or materials, then click "Save to Device" to store design options for comparison.',
+      lastSaved: 'Saved',
+      loadBtn: 'Open',
+      renameBtn: 'Rename',
+      deleteBtn: 'Delete',
+    },
+    stagePanel: {
+      purpose: 'Stage Objective',
+      duration: 'Indicative Duration Range',
+      works: 'Key Scope of Works',
+      permits: 'Relevant Permits & Approvals (PBG / SLF)',
+      checklist: 'Site Inspection Checklist',
+      supervision: 'Contractor Supervision Tip',
+      focusCamera: 'View This Stage from Best Camera',
+    },
+    technicalPanel: {
+      summaryTitle: 'Technical Configuration Summary',
+      landSize: 'Plot Dimensions',
+      landArea: 'Total Plot Area',
+      footprint: 'Ground Footprint',
+      grossArea: 'Gross Floor Area (GFA)',
+      remainingYard: 'Open Yard Area',
+      floors: 'Number of Stories',
+      orientation: 'Front Facade Orientation',
+      kdbRatio: 'Site Coverage Ratio (Illustrative BCR)',
+      estimatedRab: 'Simulated RAB Total',
+      costPerM2: 'Simulated Cost / m²',
+      openFullRab: 'Open Full RAB & BoQ Breakdown',
+      openPrintView: 'Open Print / PDF RAB Report',
+      disclaimer:
+        'Note: Technical figures and costs above are conceptual simulation estimates, not stamped structural drawings or a contractor quotation.',
+    },
+    configurator: {
+      facadeHeading: 'Wall & Facade Color',
+      customColor: 'Custom HEX Color',
+      roofHeading: 'Roof Covering Material',
+      accentHeading: 'Exterior Accent & Secondary Skin',
+      floorHeading: 'Interior Floor Finish',
+      interiorNote: 'Tip: Enable Cutaway or Interior Mode to inspect floor finishes and interior furniture clearly.',
+      addonsInterior: 'Interior Furniture Packages',
+      addonsOutdoor: 'Outdoor & Solar Features',
+      plotPresets: 'Plot Size Presets',
+      landWidth: 'Plot Width (m)',
+      landLength: 'Plot Length (m)',
+      buildingWidth: 'Building Width (m)',
+      buildingLength: 'Building Length (m)',
+      floorCount: 'Number of Floors',
+      floor1: '1 Story',
+      floor2: '2 Stories (+Stair & Slab)',
+      orientation: 'Front Orientation',
+      autoFitBtn: 'Fit Building Within Safe Plot Margin',
+    },
+    finance: {
+      modalTitle: 'RAB/BoQ Cost Estimator & Mortgage Simulator',
+      tabRab: 'RAB & BoQ Breakdown',
+      tabKpr: 'Mortgage (KPR) Simulator',
+      simulationBadge: 'Simulation Estimate - Not a Contractor Quote',
+      printBtn: 'Open Printable RAB Report (PDF / Print View)',
+      editRatesBtn: 'Customize Unit Rates & Contingency',
+      hideRatesBtn: 'Hide Assumption Editor',
+      restoreDefaultsBtn: 'Restore Default Assumptions',
+      contingencyLabel: 'Contingency Reserve (%)',
+      rabDisclaimer:
+        'Costs use editable baseline simulation assumptions. Real construction pricing varies significantly by city, site access, soil bearing capacity, structural engineering specs, material market fluctuations, taxes, and contractor overhead.',
+      kprUseRabBtn: 'Sync with Current RAB Total',
+      kprBasePrice: 'Building Construction Cost (IDR)',
+      kprLandCost: 'Optional Land Purchase Cost (IDR)',
+      kprDpModePct: 'Percentage (%)',
+      kprDpModeIdr: 'Amount (IDR)',
+      kprDpLabel: 'Down Payment (DP)',
+      kprInterest: 'Annual Interest Rate (% p.a.)',
+      kprTenor: 'Loan Tenor (Years)',
+      kprUpfrontFees: 'Optional Upfront Bank/Notary/Tax Fees (IDR)',
+      kprPrincipal: 'Loan Principal After DP',
+      kprMonthly: 'Estimated Monthly Installment',
+      kprTotalLoanPay: 'Total Principal + Interest Paid',
+      kprTotalInterest: 'Total Estimated Interest Over Tenor',
+      kprDpRatio: 'DP Share of Property Base',
+      kprUpfrontCash: 'Total Upfront Cash Needed (DP + Fees)',
+      kprDisclaimer:
+        'This calculator uses a constant-rate monthly annuity formula for early planning and does not constitute bank loan approval. Actual mortgages often switch from promotional fixed rates to market floating rates and include origination, appraisal, life/fire insurance, notary deed, and transfer tax costs.',
+    },
+    onboarding: {
+      title: 'Welcome to ArsiViz Pro Studio',
+      subtitle: 'Four quick pointers to explore and evaluate your house concept:',
+      steps: [
+        {
+          title: '1. Orbit & Slice the 3D Model',
+          desc: 'Drag the viewport to orbit 360°, toggle Cutaway (Open Roof) to inspect rooms, and scrub the Sun Study clock.',
+        },
+        {
+          title: '2. Compare 4 Distinct House Geometries',
+          desc: 'Switch between Modern Minimalist, Tropical Villa, Industrial Loft, and Japandi Courtyard in the right configurator.',
+        },
+        {
+          title: '3. Customize Materials, Stories & Plot Size',
+          desc: 'Change facade colors, roof tiles, Ulin/Andesite accents, 1-2 floors, and add-ons with live RAB recalculation.',
+        },
+        {
+          title: '4. Scrub Through 6 Construction Stages',
+          desc: 'Use the bottom timeline dock to inspect each construction milestone from batter boards to handover.',
+        },
+      ],
+      startBtn: 'Enter 3D Studio',
+    },
+  },
+} as const;
+
+export function getCopy(lang: Language) {
+  return UI_COPY[lang];
+}
